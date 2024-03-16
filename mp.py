@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 
 import typer
+from send2trash import send2trash
 
 app = typer.Typer()
 
@@ -70,7 +71,7 @@ def cleanup_raws(path: Path):
 
     for f in files_to_del:
         print(f'Deleting {str(f)}')
-        f.unlink(missing_ok=False)
+        send2trash(f)
 
 
 if __name__ == '__main__':
